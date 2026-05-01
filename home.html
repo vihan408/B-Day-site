@@ -17,6 +17,7 @@ body{
     overflow:hidden;
 }
 
+/* container */
 .container{
     background:rgba(255,255,255,0.2);
     padding:40px;
@@ -24,6 +25,30 @@ body{
     backdrop-filter: blur(10px);
     z-index:2;
     position:relative;
+}
+
+/* 🎉 ANIMATED TITLE */
+h1{
+    font-size:42px;
+    margin-bottom:20px;
+    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+}
+
+/* floating up/down */
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
+/* glowing text */
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #fff, 0 0 20px #ff6b6b, 0 0 30px #ff6b6b;
+    }
+    to{
+        text-shadow:0 0 20px #fff, 0 0 40px #ff3d77, 0 0 60px #ff3d77;
+    }
 }
 
 button{
@@ -60,7 +85,7 @@ button:hover{
 
 <div class="container">
 
-<h1>🎂 Birthday Surprise</h1>
+<h1>🎂 Birthday Surprise 🎉</h1>
 
 <a href="sad.html"><button>💙 Open when you're sad</button></a>
 <a href="sleep.html"><button>🌙 Open when you can't sleep</button></a>
