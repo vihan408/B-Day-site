@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Happy</title>
+<title>Open when you're happy</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#fff7cc,#ffffff);
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    overflow:hidden;
+
+    /* 🌈 animated happy gradient */
+    background:linear-gradient(135deg,#fff7cc,#ffecd2,#ffd6a5,#ffffff);
+    background-size:400% 400%;
+    animation: bgMove 8s ease infinite;
 }
 
+/* background animation */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating emojis */
+.emoji{
+    position:absolute;
+    font-size:24px;
+    animation: floatUp linear infinite;
+    opacity:0.8;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh); opacity:0;}
+    to{transform:translateY(-10vh); opacity:1;}
+}
+
+/* card */
 .card{
-    background:white;
+    background:rgba(255,255,255,0.4);
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     max-width:600px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    animation: fadeIn 1s ease;
+    z-index:2;
+    position:relative;
 }
 
+/* fade */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* glowing title */
+h1{
+    font-size:28px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff, 0 0 20px #ffdf6b;}
+    to{text-shadow:0 0 20px #fff, 0 0 40px #ffb703;}
+}
+
+/* text */
+p{
+    font-size:16px;
+    color:#333;
+    line-height:1.6;
+}
+
+/* image */
 img{
     width:220px;
     height:220px;
     object-fit:cover;
-    border-radius:15px;
+    border-radius:20px;
     margin:20px 0;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    animation: bounce 3s infinite;
 }
 
+@keyframes bounce{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+
+/* button */
 button{
     padding:12px 22px;
     border:none;
@@ -38,23 +102,50 @@ button{
     background:#111;
     color:white;
     cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
+<!-- 🎊 floating emojis -->
+<script>
+const emojis = ["🎉","😊","✨","💛","🎈","🥳"];
+
+for(let i=0;i<50;i++){
+    let e = document.createElement("div");
+    e.classList.add("emoji");
+    e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+    e.style.left = Math.random()*100 + "vw";
+    e.style.animationDuration = (2 + Math.random()*4) + "s";
+    e.style.fontSize = (16 + Math.random()*20) + "px";
+    document.body.appendChild(e);
+}
+</script>
+
 <div class="card">
 
 <h1>😊 Open when you're happy</h1>
 
 <p>
-Hold onto this moment — you deserve it.
+Hold onto this moment.<br>
+You deserve every bit of it.<br><br>
+
+Let yourself enjoy it fully.
 </p>
 
-<img src="images/photo1.jpg">
+<img src="images/photo1.jpg" alt="memory">
 
-<a href="index.html"><button>⬅ Back</button></a>
+<p>
+Don’t rush past this feeling — stay in it.
+</p>
+
+<a href="home.html"><button>⬅ Back Home</button></a>
 
 </div>
 
