@@ -13,25 +13,41 @@ body{
     align-items:center;
     overflow:hidden;
 
-    /* 🌈 soft emotional gradient */
+    /* soft emotional gradient */
     background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#fbc2eb);
     background-size:400% 400%;
     animation: bgMove 10s ease infinite;
 }
 
-/* background animation */
+/* moving background */
 @keyframes bgMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* floating glow blobs */
+/* 🌧️ thicker rain */
+.rain{
+    position:absolute;
+    width:3px;              /* thicker */
+    height:35px;            /* longer drops */
+    background:rgba(255,255,255,0.35);
+    border-radius:5px;      /* smoother drop shape */
+    animation: fall linear infinite;
+    filter: blur(0.2px);
+}
+
+@keyframes fall{
+    from{transform:translateY(-120vh);}
+    to{transform:translateY(120vh);}
+}
+
+/* floating blobs */
 .blob{
     position:absolute;
     width:200px;
     height:200px;
-    background:rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.25);
     border-radius:50%;
     filter:blur(40px);
     animation: float 8s ease-in-out infinite;
@@ -61,20 +77,18 @@ body{
     z-index:2;
 }
 
-/* fade */
+/* fade in */
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-/* title glow */
+/* text */
 h1{
     color:#1d3557;
     font-size:28px;
-    text-shadow:0 0 10px rgba(255,255,255,0.8);
 }
 
-/* text */
 p{
     color:#1d3557;
     font-size:16px;
@@ -89,7 +103,6 @@ img{
     border-radius:20px;
     margin:20px 0;
     box-shadow:0 15px 30px rgba(0,0,0,0.2);
-    animation: float 5s ease-in-out infinite;
 }
 
 /* button */
@@ -111,7 +124,20 @@ button:hover{
 
 <body>
 
-<!-- floating blobs -->
+<!-- 🌧️ rain generator -->
+<script>
+for(let i=0;i<80;i++){
+    let rain = document.createElement("div");
+    rain.classList.add("rain");
+    rain.style.left = Math.random()*100 + "vw";
+    rain.style.animationDuration = (0.6 + Math.random()*1.2) + "s";
+    rain.style.opacity = 0.3 + Math.random()*0.4;
+    rain.style.height = (25 + Math.random()*20) + "px";
+    document.body.appendChild(rain);
+}
+</script>
+
+<!-- floating glow blobs -->
 <div class="blob"></div>
 <div class="blob"></div>
 <div class="blob"></div>
@@ -124,14 +150,13 @@ button:hover{
 Hey. You don’t have to fix everything right now.<br>
 It’s okay to feel this. It’s okay to pause.<br><br>
 
-You’re still doing better than you think.
-And I’m proud of you for still being here.
+You are still doing better than you think.
 </p>
 
 <img src="images/photo1.jpg" alt="memory">
 
 <p>
-Take your time. Breathe. No pressure today.
+Take a breath. Go slowly. You’re safe here.
 </p>
 
 <a href="home.html"><button>⬅ Back Home</button></a>
