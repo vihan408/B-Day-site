@@ -49,6 +49,10 @@ img{
 </div>
 
 <script>
+// mark loading as already shown
+sessionStorage.setItem("loadedOnce", "true");
+
+// redirect after delay
 setTimeout(() => {
     window.location.href = "home.html";
 }, 3500);
