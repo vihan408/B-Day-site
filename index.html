@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Redirecting...</title>
+<title>Birthday Site</title>
 
-<script>
-window.location.href = "loading.html";
-</script>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+}
 
+.container{
+    background:rgba(255,255,255,0.2);
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+}
+
+button{
+    display:block;
+    width:260px;
+    margin:15px auto;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+</style>
 </head>
 
 <body>
-<p>Loading...</p>
+
+<div class="container">
+
+<h1>🎂 Birthday Surprise</h1>
+
+<a href="sad.html"><button>💙 Open when you're sad</button></a>
+<a href="sleep.html"><button>🌙 Open when you can't sleep</button></a>
+<a href="motivation.html"><button>🚀 Open when you need motivation</button></a>
+<a href="happy.html"><button>😊 Open when you're happy</button></a>
+
+</div>
+
 </body>
 </html>
