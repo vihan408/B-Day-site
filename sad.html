@@ -13,28 +13,28 @@ body{
     align-items:center;
     overflow:hidden;
 
-    /* soft emotional gradient */
-    background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#fbc2eb);
-    background-size:400% 400%;
-    animation: bgMove 10s ease infinite;
+    /* 🌌 deeper, slower emotional gradient */
+    background:linear-gradient(135deg,#0b1d3a,#102a43,#1c3d5a);
+    background-size:600% 600%;
+    animation: bgMove 25s ease infinite; /* slower */
 }
 
-/* moving background */
+/* very slow mood shift */
 @keyframes bgMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* 🌧️ thicker rain */
+/* 🌧️ darker, heavier rain */
 .rain{
     position:absolute;
-    width:3px;              /* thicker */
-    height:35px;            /* longer drops */
-    background:rgba(255,255,255,0.35);
-    border-radius:5px;      /* smoother drop shape */
+    width:4px;              /* thicker */
+    height:45px;            /* longer drops */
+    background:rgba(120,170,255,0.35); /* dark blue rain */
+    border-radius:5px;
     animation: fall linear infinite;
-    filter: blur(0.2px);
+    filter: blur(0.3px);
 }
 
 @keyframes fall{
@@ -42,42 +42,42 @@ body{
     to{transform:translateY(120vh);}
 }
 
-/* floating blobs */
+/* floating soft light blobs */
 .blob{
     position:absolute;
-    width:200px;
-    height:200px;
-    background:rgba(255,255,255,0.25);
+    width:220px;
+    height:220px;
+    background:rgba(120,160,255,0.15);
     border-radius:50%;
-    filter:blur(40px);
-    animation: float 8s ease-in-out infinite;
+    filter:blur(50px);
+    animation: float 10s ease-in-out infinite;
 }
 
 .blob:nth-child(1){top:10%; left:10%;}
-.blob:nth-child(2){bottom:10%; right:15%; animation-delay:2s;}
-.blob:nth-child(3){top:60%; left:70%; animation-delay:4s;}
+.blob:nth-child(2){bottom:10%; right:15%; animation-delay:3s;}
+.blob:nth-child(3){top:55%; left:65%; animation-delay:5s;}
 
 @keyframes float{
     0%{transform:translateY(0px) scale(1);}
-    50%{transform:translateY(-30px) scale(1.1);}
+    50%{transform:translateY(-25px) scale(1.1);}
     100%{transform:translateY(0px) scale(1);}
 }
 
 /* card */
 .card{
-    background:rgba(255,255,255,0.25);
+    background:rgba(255,255,255,0.12);
     padding:40px;
     border-radius:25px;
     max-width:600px;
     text-align:center;
-    backdrop-filter: blur(12px);
-    box-shadow:0 20px 50px rgba(0,0,0,0.15);
-    animation: fadeIn 1s ease;
+    backdrop-filter: blur(14px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.25);
+    animation: fadeIn 1.2s ease;
     position:relative;
     z-index:2;
 }
 
-/* fade in */
+/* fade */
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
@@ -85,12 +85,12 @@ body{
 
 /* text */
 h1{
-    color:#1d3557;
+    color:#e6f0ff;
     font-size:28px;
 }
 
 p{
-    color:#1d3557;
+    color:#d6e6ff;
     font-size:16px;
     line-height:1.6;
 }
@@ -102,7 +102,7 @@ img{
     object-fit:cover;
     border-radius:20px;
     margin:20px 0;
-    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    box-shadow:0 15px 30px rgba(0,0,0,0.3);
 }
 
 /* button */
@@ -110,8 +110,8 @@ button{
     padding:12px 22px;
     border:none;
     border-radius:12px;
-    background:#1d3557;
-    color:white;
+    background:#d6e6ff;
+    color:#0b1d3a;
     cursor:pointer;
     transition:0.3s;
 }
@@ -126,18 +126,18 @@ button:hover{
 
 <!-- 🌧️ rain generator -->
 <script>
-for(let i=0;i<80;i++){
+for(let i=0;i<90;i++){
     let rain = document.createElement("div");
     rain.classList.add("rain");
     rain.style.left = Math.random()*100 + "vw";
-    rain.style.animationDuration = (0.6 + Math.random()*1.2) + "s";
-    rain.style.opacity = 0.3 + Math.random()*0.4;
-    rain.style.height = (25 + Math.random()*20) + "px";
+    rain.style.animationDuration = (0.7 + Math.random()*1.4) + "s";
+    rain.style.opacity = 0.2 + Math.random()*0.4;
+    rain.style.height = (35 + Math.random()*25) + "px";
     document.body.appendChild(rain);
 }
 </script>
 
-<!-- floating glow blobs -->
+<!-- soft glow blobs -->
 <div class="blob"></div>
 <div class="blob"></div>
 <div class="blob"></div>
@@ -148,15 +148,15 @@ for(let i=0;i<80;i++){
 
 <p>
 Hey. You don’t have to fix everything right now.<br>
-It’s okay to feel this. It’s okay to pause.<br><br>
+Just exist for a moment. That’s enough.<br><br>
 
-You are still doing better than you think.
+You’re not alone in this.
 </p>
 
 <img src="images/photo1.jpg" alt="memory">
 
 <p>
-Take a breath. Go slowly. You’re safe here.
+Take your time. Breathe slowly. Let it pass gently.
 </p>
 
 <a href="home.html"><button>⬅ Back Home</button></a>
