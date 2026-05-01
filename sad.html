@@ -12,59 +12,71 @@ body{
     justify-content:center;
     align-items:center;
     overflow:hidden;
-    background:linear-gradient(135deg,#cfd9df,#e2ebf0);
-    position:relative;
+
+    /* 🌈 soft emotional gradient */
+    background:linear-gradient(135deg,#a1c4fd,#c2e9fb,#fbc2eb);
+    background-size:400% 400%;
+    animation: bgMove 10s ease infinite;
 }
 
-/* rain effect */
-.rain{
+/* background animation */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating glow blobs */
+.blob{
     position:absolute;
-    width:2px;
-    height:20px;
-    background:rgba(0,0,0,0.1);
-    animation: fall linear infinite;
+    width:200px;
+    height:200px;
+    background:rgba(255,255,255,0.3);
+    border-radius:50%;
+    filter:blur(40px);
+    animation: float 8s ease-in-out infinite;
 }
 
-@keyframes fall{
-    from{transform:translateY(-100vh);}
-    to{transform:translateY(100vh);}
+.blob:nth-child(1){top:10%; left:10%;}
+.blob:nth-child(2){bottom:10%; right:15%; animation-delay:2s;}
+.blob:nth-child(3){top:60%; left:70%; animation-delay:4s;}
+
+@keyframes float{
+    0%{transform:translateY(0px) scale(1);}
+    50%{transform:translateY(-30px) scale(1.1);}
+    100%{transform:translateY(0px) scale(1);}
 }
 
 /* card */
 .card{
-    background:rgba(255,255,255,0.9);
+    background:rgba(255,255,255,0.25);
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     max-width:600px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
-    animation:fadeIn 1s ease, float 4s ease-in-out infinite;
-    z-index:2;
+    backdrop-filter: blur(12px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.15);
+    animation: fadeIn 1s ease;
     position:relative;
+    z-index:2;
 }
 
-/* fade in */
+/* fade */
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
-/* gentle float */
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-8px);}
-    100%{transform:translateY(0px);}
-}
-
 /* title glow */
 h1{
-    color:#2b2d42;
-    text-shadow:0 0 10px rgba(0,0,0,0.1);
+    color:#1d3557;
+    font-size:28px;
+    text-shadow:0 0 10px rgba(255,255,255,0.8);
 }
 
 /* text */
 p{
-    color:#444;
+    color:#1d3557;
     font-size:16px;
     line-height:1.6;
 }
@@ -74,9 +86,10 @@ img{
     width:220px;
     height:220px;
     object-fit:cover;
-    border-radius:15px;
+    border-radius:20px;
     margin:20px 0;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    animation: float 5s ease-in-out infinite;
 }
 
 /* button */
@@ -84,7 +97,7 @@ button{
     padding:12px 22px;
     border:none;
     border-radius:12px;
-    background:#111;
+    background:#1d3557;
     color:white;
     cursor:pointer;
     transition:0.3s;
@@ -98,17 +111,10 @@ button:hover{
 
 <body>
 
-<!-- rain -->
-<script>
-for(let i=0;i<60;i++){
-    let rain = document.createElement("div");
-    rain.classList.add("rain");
-    rain.style.left = Math.random()*100 + "vw";
-    rain.style.animationDuration = (0.5 + Math.random()*1.5) + "s";
-    rain.style.opacity = Math.random();
-    document.body.appendChild(rain);
-}
-</script>
+<!-- floating blobs -->
+<div class="blob"></div>
+<div class="blob"></div>
+<div class="blob"></div>
 
 <div class="card">
 
@@ -116,17 +122,16 @@ for(let i=0;i<60;i++){
 
 <p>
 Hey. You don’t have to fix everything right now.<br>
-It’s okay to pause. It’s okay to feel this.<br><br>
+It’s okay to feel this. It’s okay to pause.<br><br>
 
-You are still doing better than you think.
-And you’re not alone in this.
+You’re still doing better than you think.
+And I’m proud of you for still being here.
 </p>
 
 <img src="images/photo1.jpg" alt="memory">
 
 <p>
-Take a deep breath. Drink some water.  
-Give yourself time — not pressure.
+Take your time. Breathe. No pressure today.
 </p>
 
 <a href="home.html"><button>⬅ Back Home</button></a>
