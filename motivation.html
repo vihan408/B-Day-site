@@ -1,36 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Motivation</title>
+<title>Open when you need motivation</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#fff0e6,#ffffff);
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    overflow:hidden;
+
+    /* ⚡ energetic gradient */
+    background:linear-gradient(135deg,#ffecd2,#fcb69f,#ff9a9e);
+    background-size:400% 400%;
+    animation: bgMove 10s ease infinite;
 }
 
-.card{
+/* background movement */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating energy particles */
+.particle{
+    position:absolute;
+    width:6px;
+    height:6px;
     background:white;
+    border-radius:50%;
+    opacity:0.7;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp{
+    from{transform:translateY(100vh); opacity:0;}
+    to{transform:translateY(-10vh); opacity:1;}
+}
+
+/* card */
+.card{
+    background:rgba(255,255,255,0.25);
     padding:40px;
-    border-radius:20px;
+    border-radius:25px;
     max-width:600px;
     text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    backdrop-filter: blur(12px);
+    box-shadow:0 20px 50px rgba(0,0,0,0.2);
+    animation: fadeIn 1s ease;
+    z-index:2;
+    position:relative;
 }
 
+/* fade */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* glowing title */
+h1{
+    font-size:28px;
+    color:#111;
+    animation: glow 2s infinite alternate, bounce 3s infinite;
+}
+
+@keyframes glow{
+    from{text-shadow:0 0 10px #fff, 0 0 20px #ff6b6b;}
+    to{text-shadow:0 0 20px #fff, 0 0 40px #ff3d77;}
+}
+
+@keyframes bounce{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0);}
+}
+
+/* text */
+p{
+    font-size:16px;
+    color:#222;
+    line-height:1.6;
+}
+
+/* image */
 img{
     width:220px;
     height:220px;
     object-fit:cover;
-    border-radius:15px;
+    border-radius:20px;
     margin:20px 0;
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    animation: float 4s ease-in-out infinite;
 }
 
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
+/* button */
 button{
     padding:12px 22px;
     border:none;
@@ -38,23 +112,47 @@ button{
     background:#111;
     color:white;
     cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
+<!-- ⚡ particles -->
+<script>
+for(let i=0;i<60;i++){
+    let p = document.createElement("div");
+    p.classList.add("particle");
+    p.style.left = Math.random()*100 + "vw";
+    p.style.animationDuration = (2 + Math.random()*4) + "s";
+    p.style.animationDelay = Math.random()*5 + "s";
+    document.body.appendChild(p);
+}
+</script>
+
 <div class="card">
 
 <h1>🚀 Open when you need motivation</h1>
 
 <p>
-You’ve already survived everything so far. Keep going.
+You’ve already survived everything so far.<br>
+That means you’re stronger than anything ahead.<br><br>
+
+Keep going. You’re closer than you think.
 </p>
 
-<img src="images/photo1.jpg">
+<img src="images/photo1.jpg" alt="memory">
 
-<a href="index.html"><button>⬅ Back</button></a>
+<p>
+One step at a time. Don’t stop now.
+</p>
+
+<a href="home.html"><button>⬅ Back Home</button></a>
 
 </div>
 
