@@ -4,7 +4,11 @@
 <title>Loading...</title>
 
 <script>
-window.location.href = "loading.html";
+if (sessionStorage.getItem("loadedOnce")) {
+    window.location.replace("home.html");
+} else {
+    window.location.replace("loading.html");
+}
 </script>
 
 </head>
