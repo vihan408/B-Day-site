@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special Video</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#000428,#004e92);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+/* card */
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:50px;
+    border-radius:20px;
+    backdrop-filter: blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* countdown number */
+#count{
+    font-size:90px;
+    font-weight:bold;
+    animation: pop 0.5s ease;
+}
+
+/* pop effect */
+@keyframes pop{
+    from{transform:scale(0.5); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* hidden video */
+#videoContainer{
+    display:none;
+    margin-top:20px;
+}
+
+/* button */
+button{
+    padding:12px 22px;
+    border:none;
+    border-radius:12px;
+    background:white;
+    color:black;
+    cursor:pointer;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎥 Get Ready...</h1>
+
+<div id="count">5</div>
+
+<div id="videoContainer">
+    <h2>💙 Surprise!</h2>
+
+    <!-- replace this link later -->
+    <iframe width="320" height="200"
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        frameborder="0"
+        allowfullscreen>
+    </iframe>
+
+    <br>
+
+    <a href="home.html"><button>⬅ Back Home</button></a>
+</div>
+
+</div>
+
+<script>
+let count = 5;
+let display = document.getElementById("count");
+let video = document.getElementById("videoContainer");
+
+let timer = setInterval(() => {
+    count--;
+    display.innerText = count;
+
+    // animation restart
+    display.style.animation = "none";
+    void display.offsetWidth;
+    display.style.animation = "pop 0.5s ease";
+
+    if(count === 0){
+        clearInterval(timer);
+        display.style.display = "none";
+        video.style.display = "block";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
