@@ -1,42 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sad</title>
+<title>Open when you're sad</title>
 
 <style>
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#eef2ff,#ffffff);
+    height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(135deg,#cfd9df,#e2ebf0);
+    position:relative;
 }
 
+/* rain effect */
+.rain{
+    position:absolute;
+    width:2px;
+    height:20px;
+    background:rgba(0,0,0,0.1);
+    animation: fall linear infinite;
+}
+
+@keyframes fall{
+    from{transform:translateY(-100vh);}
+    to{transform:translateY(100vh);}
+}
+
+/* card */
 .card{
-    background:white;
+    background:rgba(255,255,255,0.9);
     padding:40px;
     border-radius:20px;
     max-width:600px;
     text-align:center;
     box-shadow:0 15px 40px rgba(0,0,0,0.1);
-    animation:fadeIn 0.8s ease;
+    animation:fadeIn 1s ease, float 4s ease-in-out infinite;
+    z-index:2;
+    position:relative;
 }
 
+/* fade in */
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(15px);}
+    from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
 
+/* gentle float */
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-8px);}
+    100%{transform:translateY(0px);}
+}
+
+/* title glow */
+h1{
+    color:#2b2d42;
+    text-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* text */
+p{
+    color:#444;
+    font-size:16px;
+    line-height:1.6;
+}
+
+/* image */
 img{
     width:220px;
     height:220px;
     object-fit:cover;
     border-radius:15px;
     margin:20px 0;
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* button */
 button{
     padding:12px 22px;
     border:none;
@@ -44,24 +87,49 @@ button{
     background:#111;
     color:white;
     cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
+<!-- rain -->
+<script>
+for(let i=0;i<60;i++){
+    let rain = document.createElement("div");
+    rain.classList.add("rain");
+    rain.style.left = Math.random()*100 + "vw";
+    rain.style.animationDuration = (0.5 + Math.random()*1.5) + "s";
+    rain.style.opacity = Math.random();
+    document.body.appendChild(rain);
+}
+</script>
+
 <div class="card">
 
 <h1>💙 Open when you're sad</h1>
 
 <p>
-Hey. You don’t have to fix everything right now.
-Just breathe. You’re not alone.
+Hey. You don’t have to fix everything right now.<br>
+It’s okay to pause. It’s okay to feel this.<br><br>
+
+You are still doing better than you think.
+And you’re not alone in this.
 </p>
 
-<img src="images/photo1.jpg">
+<img src="images/photo1.jpg" alt="memory">
 
-<a href="index.html"><button>⬅ Back</button></a>
+<p>
+Take a deep breath. Drink some water.  
+Give yourself time — not pressure.
+</p>
+
+<a href="home.html"><button>⬅ Back Home</button></a>
 
 </div>
 
