@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Loading Birthday...</title>
+<title>Loading...</title>
 
 <style>
 body{
@@ -14,17 +14,15 @@ body{
     background:linear-gradient(135deg,#000428,#004e92);
     color:white;
     text-align:center;
-    overflow:hidden;
 }
 
-/* fade in animation */
 @keyframes fadeIn {
     from {opacity:0; transform:scale(0.95);}
     to {opacity:1; transform:scale(1);}
 }
 
 .card{
-    animation: fadeIn 1.2s ease-out;
+    animation: fadeIn 1.2s ease;
 }
 
 img{
@@ -36,26 +34,16 @@ img{
     margin-bottom:20px;
 }
 
-h1{
-    margin-bottom:10px;
-    font-size:28px;
-}
-
-p{
-    opacity:0.8;
-}
-
-/* loading dots animation */
-.dots::after {
+.dots::after{
     content:"";
-    animation: dots 1.5s infinite;
+    animation:dots 1.5s infinite;
 }
 
-@keyframes dots {
-    0% {content:"";}
-    33% {content:".";}
-    66% {content:"..";}
-    100% {content:"...";}
+@keyframes dots{
+    0%{content:"";}
+    33%{content:".";}
+    66%{content:"..";}
+    100%{content:"...";}
 }
 </style>
 </head>
@@ -64,19 +52,17 @@ p{
 
 <div class="card">
 
-<!-- YOUR IMAGE -->
-<img src="images/photo1.jpg" alt="birthday person">
+<img src="images/photo1.jpg">
 
 <h1>Welcome to Alex's Birthday 🎂</h1>
-
 <p>Loading your surprise<span class="dots"></span></p>
 
 </div>
 
 <script>
-setTimeout(() => {
-    window.location.href = "index.html";
-}, 3500);
+setTimeout(()=>{
+    window.location.href="index.html";
+},3500);
 </script>
 
 </body>
