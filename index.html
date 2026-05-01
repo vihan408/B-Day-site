@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Happy Birthday</title>
+<title>Birthday Site</title>
 
 <style>
 body{
@@ -14,13 +14,6 @@ body{
     align-items:center;
     text-align:center;
     color:white;
-    overflow:hidden;
-}
-
-/* fade-in animation */
-@keyframes fadeIn {
-    from {opacity:0; transform:translateY(20px);}
-    to {opacity:1; transform:translateY(0);}
 }
 
 .container{
@@ -28,18 +21,8 @@ body{
     padding:40px;
     border-radius:20px;
     backdrop-filter: blur(10px);
-    animation: fadeIn 1s ease-out;
 }
 
-h1{
-    margin-bottom:10px;
-}
-
-p{
-    opacity:0.9;
-}
-
-/* button styling */
 button{
     display:block;
     width:260px;
@@ -55,34 +38,21 @@ button{
 button:hover{
     transform:scale(1.05);
 }
-
-/* soft floating background circles */
-.circle{
-    position:absolute;
-    border-radius:50%;
-    background:rgba(255,255,255,0.15);
-    animation: float 8s infinite ease-in-out;
-}
-
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-30px);}
-    100%{transform:translateY(0);}
-}
 </style>
 </head>
 
 <body>
 
-<!-- background decoration -->
-<div class="circle" style="width:120px;height:120px;top:10%;left:10%;"></div>
-<div class="circle" style="width:80px;height:80px;bottom:15%;right:15%;"></div>
-
 <div class="container">
 
-<h1>🎂 Happy Birthday</h1>
-<p>Open these whenever you need them.</p>
+<h1>🎂 Birthday Surprise</h1>
 
+<p>Click below to enter</p>
+
+<!-- STARTS LOADING SCREEN -->
+<a href="loading.html"><button>Enter 🎉</button></a>
+
+<!-- MAIN SECTIONS -->
 <a href="sad.html"><button>💙 Open when you're sad</button></a>
 <a href="sleep.html"><button>🌙 Open when you can't sleep</button></a>
 <a href="motivation.html"><button>🚀 Open when you need motivation</button></a>
