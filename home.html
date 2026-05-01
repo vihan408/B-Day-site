@@ -14,6 +14,7 @@ body{
     align-items:center;
     text-align:center;
     color:white;
+    overflow:hidden;
 }
 
 .container{
@@ -21,6 +22,8 @@ body{
     padding:40px;
     border-radius:20px;
     backdrop-filter: blur(10px);
+    z-index:2;
+    position:relative;
 }
 
 button{
@@ -38,10 +41,22 @@ button{
 button:hover{
     transform:scale(1.05);
 }
+
+/* confetti canvas */
+#confetti{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
 </style>
 </head>
 
 <body>
+
+<canvas id="confetti"></canvas>
 
 <div class="container">
 
@@ -53,6 +68,46 @@ button:hover{
 <a href="happy.html"><button>😊 Open when you're happy</button></a>
 
 </div>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let pieces = [];
+
+for (let i = 0; i < 150; i++) {
+    pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: Math.random() * 6 + 4,
+        speed: Math.random() * 3 + 2,
+        color: `hsl(${Math.random() * 360}, 70%, 60%)`
+    });
+}
+
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let p of pieces) {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+
+        p.y += p.speed;
+
+        if (p.y > canvas.height) {
+            p.y = -10;
+            p.x = Math.random() * canvas.width;
+        }
+    }
+
+    requestAnimationFrame(draw);
+}
+
+draw();
+</script>
 
 </body>
 </html>
