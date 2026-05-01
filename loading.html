@@ -14,20 +14,17 @@ body{
     background:linear-gradient(135deg,#000428,#004e92);
     color:white;
     text-align:center;
-    overflow:hidden;
-}
-
-/* animation */
-@keyframes fadeIn {
-    from {opacity:0; transform:scale(0.95);}
-    to {opacity:1; transform:scale(1);}
 }
 
 .card{
     animation: fadeIn 1.2s ease;
 }
 
-/* image */
+@keyframes fadeIn {
+    from {opacity:0; transform:scale(0.95);}
+    to {opacity:1; transform:scale(1);}
+}
+
 img{
     width:180px;
     height:180px;
@@ -35,29 +32,6 @@ img{
     object-fit:cover;
     border:4px solid white;
     margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-h1{
-    margin-bottom:10px;
-    font-size:28px;
-}
-
-p{
-    opacity:0.85;
-}
-
-/* dots animation */
-.dots::after{
-    content:"";
-    animation:dots 1.5s infinite;
-}
-
-@keyframes dots{
-    0%{content:"";}
-    33%{content:".";}
-    66%{content:"..";}
-    100%{content:"...";}
 }
 </style>
 </head>
@@ -66,17 +40,17 @@ p{
 
 <div class="card">
 
-<img src="images/photo1.jpg" alt="birthday photo">
+<img src="images/photo1.jpg" alt="photo">
 
-<h1>Welcome to Viviene's Birthday 🎂</h1>
+<h1>Welcome to Alex's Birthday 🎂</h1>
 
-<p>Loading your surprise<span class="dots"></span></p>
+<p>Loading your surprise...</p>
 
 </div>
 
 <script>
 setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "home.html";
 }, 3500);
 </script>
 
