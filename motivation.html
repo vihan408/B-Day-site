@@ -7,35 +7,40 @@
 body{
     margin:0;
     font-family:Arial, sans-serif;
-    height:100vh;
+
+    /* allow page to grow naturally */
+    min-height:100vh;
+
     display:flex;
     justify-content:center;
-    align-items:center;
-    overflow:hidden;
+    align-items:flex-start;
 
-    /* 🔥 energetic deep gradient */
+    overflow-y:auto;
+    padding:40px 0;
+
     background:linear-gradient(135deg,#ff512f,#ff2d55,#ff8a00,#ff3c6f);
     background-size:400% 400%;
     animation:bgMove 10s ease infinite;
 }
 
-/* moving energy background */
+/* moving background */
 @keyframes bgMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* glowing energy mist overlay */
+/* glow overlay */
 body::before{
     content:"";
-    position:absolute;
+    position:fixed;
     width:100%;
     height:100%;
     background:radial-gradient(circle at center,
         rgba(255,255,255,0.25),
         transparent 60%);
     animation:pulse 5s ease-in-out infinite;
+    pointer-events:none;
 }
 
 @keyframes pulse{
@@ -44,9 +49,9 @@ body::before{
     100%{opacity:0.3;}
 }
 
-/* ⚡ ENERGY STARS (more sharp, fast, bright) */
+/* stars */
 .star{
-    position:absolute;
+    position:fixed;
     width:2px;
     height:2px;
     background:white;
@@ -72,11 +77,11 @@ body::before{
     text-align:center;
     backdrop-filter:blur(16px);
     box-shadow:0 25px 60px rgba(0,0,0,0.25);
-    z-index:2;
     position:relative;
+    margin-bottom:40px;
 }
 
-/* title glow (stronger = motivation vibe) */
+/* title */
 h1{
     font-size:36px;
     color:white;
@@ -91,7 +96,7 @@ p{
     line-height:1.6;
 }
 
-/* SLIDESHOW */
+/* slideshow */
 .slideshow{
     position:relative;
     width:100%;
@@ -137,8 +142,8 @@ button:hover{
 
 <body>
 
-<!-- ⚡ energy stars -->
 <script>
+/* create energy stars */
 for(let i=0;i<140;i++){
     let star=document.createElement("div");
     star.classList.add("star");
@@ -166,7 +171,6 @@ That means you can handle whatever comes next.<br>
 Don’t stop now — you’re closer than you think.
 </p>
 
-<!-- SLIDESHOW -->
 <div class="slideshow">
     <img class="slide active" src="images/Motivation1.jpg">
     <img class="slide" src="images/Motivation2.jpg">
