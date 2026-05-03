@@ -1,140 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Open when you need motivation</title>
+<title>Motivation Mode 💪</title>
 
 <style>
 body{
     margin:0;
-    font-family:Arial, sans-serif;
-    height:100vh;
+    background:black;
     display:flex;
     justify-content:center;
     align-items:center;
+    height:100vh;
     overflow:hidden;
-
-    /* clean energetic gradient (no clutter) */
-    background:linear-gradient(135deg,#ff512f,#dd2476,#ff9a9e);
-    background-size:300% 300%;
-    animation: bgMove 10s ease infinite;
+    font-family:Arial, sans-serif;
 }
 
-/* smooth slow motion background */
-@keyframes bgMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
-
-/* subtle glow overlay */
-body::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 60%);
-    animation: pulse 6s ease-in-out infinite;
-}
-
-@keyframes pulse{
-    0%{opacity:0.4;}
-    50%{opacity:0.8;}
-    100%{opacity:0.4;}
-}
-
-/* card */
-.card{
-    background:rgba(255,255,255,0.12);
-    padding:50px;
-    border-radius:25px;
-    max-width:650px;
-    text-align:center;
-    backdrop-filter: blur(16px);
-    box-shadow:0 25px 60px rgba(0,0,0,0.25);
-    animation: fadeIn 1s ease;
-    z-index:2;
-    position:relative;
-}
-
-/* fade in */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* strong title */
-h1{
-    font-size:36px;
-    color:white;
-    font-weight:bold;
-    letter-spacing:1px;
-    text-shadow:
-        0 0 10px rgba(255,255,255,0.6),
-        0 0 25px rgba(255,80,120,0.8);
-}
-
-/* text */
-p{
-    font-size:18px;
-    color:white;
-    line-height:1.6;
-}
-
-/* image */
 img{
-    width:230px;
-    height:230px;
-    object-fit:cover;
-    border-radius:20px;
-    margin:20px 0;
-    box-shadow:0 20px 40px rgba(0,0,0,0.3);
-    transition:0.3s;
+    position:absolute;
+    max-width:90%;
+    max-height:90%;
+    object-fit:contain;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
 }
 
-img:hover{
-    transform:scale(1.03);
-}
-
-/* button */
-button{
-    padding:14px 24px;
-    border:none;
-    border-radius:12px;
-    background:white;
-    color:#111;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    transform:scale(1.06);
+img.active{
+    opacity:1;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<!-- Motivation images -->
+<img src="images/Motivation1.jpg" class="active">
 
-<h1>🚀 KEEP GOING</h1>
+<!-- Add more later like this -->
+<!-- <img src="images/Motivation2.jpg"> -->
+<!-- <img src="images/Motivation3.jpg"> -->
 
-<p>
-You’ve already survived 100% of your worst days so far.<br><br>
+<script>
+const slides = document.querySelectorAll("img");
+let index = 0;
 
-That means you can handle whatever comes next.<br>
-Don’t stop now — you’re closer than you think.
-</p>
-
-<img src="images/photo1.jpg" alt="memory">
-
-<p>
-One step at a time. That’s enough.
-</p>
-
-<a href="home.html"><button>⬅ Back Home</button></a>
-
-</div>
+setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}, 4000); // 4 seconds
+</script>
 
 </body>
 </html>
