@@ -60,7 +60,7 @@ h1{
     to{text-shadow:0 0 20px #fff,0 0 40px #ffb703;}
 }
 
-/* SLIDESHOW AREA */
+/* slideshow container */
 .slideshow{
     position:relative;
     width:100%;
@@ -76,36 +76,15 @@ h1{
     position:absolute;
     max-width:100%;
     max-height:100%;
-    object-fit:contain;   /* keeps full image visible */
+    object-fit:contain;
     border-radius:20px;
     box-shadow:0 20px 40px rgba(0,0,0,0.25);
     opacity:0;
     transition:opacity 1s ease-in-out;
-    cursor:pointer;
 }
 
 .slide.active{
     opacity:1;
-}
-
-/* FULLSCREEN VIEWER */
-#fullscreen{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:black;
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
-
-#fullscreen img{
-    max-width:95%;
-    max-height:95%;
-    object-fit:contain;
 }
 
 /* button */
@@ -127,9 +106,10 @@ button:hover{
 
 <body>
 
-<!-- 🎉 Floating emojis -->
+<!-- 🎉 floating emojis -->
 <script>
 const emojis=["🎉","😊","✨","💛","🎈","🥳"];
+
 for(let i=0;i<50;i++){
     let e=document.createElement("div");
     e.className="emoji";
@@ -172,13 +152,7 @@ Don’t rush past this feeling — stay in it.
 
 </div>
 
-<!-- FULLSCREEN IMAGE VIEW -->
-<div id="fullscreen">
-    <img id="fullImg">
-</div>
-
 <script>
-/* slideshow */
 const slides=document.querySelectorAll(".slide");
 let index=0;
 
@@ -186,22 +160,7 @@ setInterval(()=>{
     slides[index].classList.remove("active");
     index=(index+1)%slides.length;
     slides[index].classList.add("active");
-},3000);
-
-/* fullscreen viewer */
-const fullscreen=document.getElementById("fullscreen");
-const fullImg=document.getElementById("fullImg");
-
-slides.forEach(img=>{
-    img.addEventListener("click",()=>{
-        fullImg.src=img.src;
-        fullscreen.style.display="flex";
-    });
-});
-
-fullscreen.addEventListener("click",()=>{
-    fullscreen.style.display="none";
-});
+},4000);   // ✅ 4 seconds
 </script>
 
 </body>
