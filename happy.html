@@ -42,7 +42,8 @@ body{
     background:rgba(255,255,255,0.4);
     padding:40px;
     border-radius:25px;
-    max-width:650px;
+    width:80%;
+    max-width:850px;
     text-align:center;
     backdrop-filter:blur(12px);
     box-shadow:0 20px 50px rgba(0,0,0,0.15);
@@ -59,28 +60,52 @@ h1{
     to{text-shadow:0 0 20px #fff,0 0 40px #ffb703;}
 }
 
-/* slideshow container */
+/* SLIDESHOW AREA */
 .slideshow{
     position:relative;
-    width:260px;
-    height:260px;
-    margin:20px auto;
+    width:100%;
+    height:420px;
+    margin:25px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-/* slideshow images */
+/* images */
 .slide{
     position:absolute;
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;   /* keeps full image visible */
     border-radius:20px;
-    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
     opacity:0;
     transition:opacity 1s ease-in-out;
+    cursor:pointer;
 }
 
 .slide.active{
     opacity:1;
+}
+
+/* FULLSCREEN VIEWER */
+#fullscreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+#fullscreen img{
+    max-width:95%;
+    max-height:95%;
+    object-fit:contain;
 }
 
 /* button */
@@ -125,7 +150,7 @@ Hold onto this moment.<br>
 You deserve every bit of it.
 </p>
 
-<!-- ✅ SLIDESHOW -->
+<!-- SLIDESHOW -->
 <div class="slideshow">
 
 <img class="slide active" src="images/Happy1.jpg">
@@ -147,7 +172,13 @@ Don’t rush past this feeling — stay in it.
 
 </div>
 
+<!-- FULLSCREEN IMAGE VIEW -->
+<div id="fullscreen">
+    <img id="fullImg">
+</div>
+
 <script>
+/* slideshow */
 const slides=document.querySelectorAll(".slide");
 let index=0;
 
@@ -156,6 +187,21 @@ setInterval(()=>{
     index=(index+1)%slides.length;
     slides[index].classList.add("active");
 },3000);
+
+/* fullscreen viewer */
+const fullscreen=document.getElementById("fullscreen");
+const fullImg=document.getElementById("fullImg");
+
+slides.forEach(img=>{
+    img.addEventListener("click",()=>{
+        fullImg.src=img.src;
+        fullscreen.style.display="flex";
+    });
+});
+
+fullscreen.addEventListener("click",()=>{
+    fullscreen.style.display="none";
+});
 </script>
 
 </body>
