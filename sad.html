@@ -13,28 +13,25 @@ body{
     align-items:center;
     overflow:hidden;
 
-    /* 🌌 deeper, slower emotional gradient */
     background:linear-gradient(135deg,#0b1d3a,#102a43,#1c3d5a);
     background-size:600% 600%;
-    animation: bgMove 25s ease infinite; /* slower */
+    animation:bgMove 25s ease infinite;
 }
 
-/* very slow mood shift */
 @keyframes bgMove{
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* 🌧️ darker, heavier rain */
+/* 🌧 rain */
 .rain{
     position:absolute;
-    width:4px;              /* thicker */
-    height:45px;            /* longer drops */
-    background:rgba(120,170,255,0.35); /* dark blue rain */
+    width:4px;
+    height:45px;
+    background:rgba(120,170,255,0.35);
     border-radius:5px;
-    animation: fall linear infinite;
-    filter: blur(0.3px);
+    animation:fall linear infinite;
 }
 
 @keyframes fall{
@@ -42,7 +39,7 @@ body{
     to{transform:translateY(120vh);}
 }
 
-/* floating soft light blobs */
+/* glow blobs */
 .blob{
     position:absolute;
     width:220px;
@@ -50,17 +47,17 @@ body{
     background:rgba(120,160,255,0.15);
     border-radius:50%;
     filter:blur(50px);
-    animation: float 10s ease-in-out infinite;
+    animation:float 10s ease-in-out infinite;
 }
 
-.blob:nth-child(1){top:10%; left:10%;}
-.blob:nth-child(2){bottom:10%; right:15%; animation-delay:3s;}
-.blob:nth-child(3){top:55%; left:65%; animation-delay:5s;}
+.blob:nth-child(1){top:10%;left:10%;}
+.blob:nth-child(2){bottom:10%;right:15%;animation-delay:3s;}
+.blob:nth-child(3){top:55%;left:65%;animation-delay:5s;}
 
 @keyframes float{
-    0%{transform:translateY(0px) scale(1);}
-    50%{transform:translateY(-25px) scale(1.1);}
-    100%{transform:translateY(0px) scale(1);}
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-25px);}
+    100%{transform:translateY(0px);}
 }
 
 /* card */
@@ -68,41 +65,48 @@ body{
     background:rgba(255,255,255,0.12);
     padding:40px;
     border-radius:25px;
-    max-width:600px;
+    width:80%;
+    max-width:850px;
     text-align:center;
-    backdrop-filter: blur(14px);
+    backdrop-filter:blur(14px);
     box-shadow:0 20px 50px rgba(0,0,0,0.25);
-    animation: fadeIn 1.2s ease;
-    position:relative;
     z-index:2;
-}
-
-/* fade */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
 }
 
 /* text */
 h1{
     color:#e6f0ff;
-    font-size:28px;
 }
 
 p{
     color:#d6e6ff;
-    font-size:16px;
     line-height:1.6;
 }
 
-/* image */
-img{
-    width:220px;
-    height:220px;
-    object-fit:cover;
+/* slideshow */
+.slideshow{
+    position:relative;
+    width:100%;
+    height:420px;
+    margin:25px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.slide{
+    position:absolute;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
     border-radius:20px;
-    margin:20px 0;
-    box-shadow:0 15px 30px rgba(0,0,0,0.3);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    opacity:0;
+    transition:opacity 1.5s ease-in-out;
+}
+
+.slide.active{
+    opacity:1;
 }
 
 /* button */
@@ -113,7 +117,6 @@ button{
     background:#d6e6ff;
     color:#0b1d3a;
     cursor:pointer;
-    transition:0.3s;
 }
 
 button:hover{
@@ -124,20 +127,19 @@ button:hover{
 
 <body>
 
-<!-- 🌧️ rain generator -->
+<!-- 🌧 rain generator -->
 <script>
 for(let i=0;i<90;i++){
-    let rain = document.createElement("div");
-    rain.classList.add("rain");
-    rain.style.left = Math.random()*100 + "vw";
-    rain.style.animationDuration = (0.7 + Math.random()*1.4) + "s";
-    rain.style.opacity = 0.2 + Math.random()*0.4;
-    rain.style.height = (35 + Math.random()*25) + "px";
+    let rain=document.createElement("div");
+    rain.className="rain";
+    rain.style.left=Math.random()*100+"vw";
+    rain.style.animationDuration=(0.8+Math.random()*1.6)+"s";
+    rain.style.opacity=0.2+Math.random()*0.4;
+    rain.style.height=(35+Math.random()*25)+"px";
     document.body.appendChild(rain);
 }
 </script>
 
-<!-- soft glow blobs -->
 <div class="blob"></div>
 <div class="blob"></div>
 <div class="blob"></div>
@@ -148,20 +150,38 @@ for(let i=0;i<90;i++){
 
 <p>
 Hey. You don’t have to fix everything right now.<br>
-Just exist for a moment. That’s enough.<br><br>
-
-You’re not alone in this.
+Just exist for a moment. That’s enough.
 </p>
 
-<img src="images/photo1.jpg" alt="memory">
+<!-- SLIDESHOW -->
+<div class="slideshow">
+
+<img class="slide active" src="images/Sad1.jpg">
+<img class="slide" src="images/Sad2.jpg">
+<img class="slide" src="images/Sad3.jpg">
+<img class="slide" src="images/Sad4.jpg">
+
+</div>
 
 <p>
-Take your time. Breathe slowly. Let it pass gently.
+Take your time. Breathe slowly.<br>
+Let it pass gently.
 </p>
 
 <a href="home.html"><button>⬅ Back Home</button></a>
 
 </div>
+
+<script>
+const slides=document.querySelectorAll(".slide");
+let index=0;
+
+setInterval(()=>{
+    slides[index].classList.remove("active");
+    index=(index+1)%slides.length;
+    slides[index].classList.add("active");
+},4000); // 4 seconds
+</script>
 
 </body>
 </html>
