@@ -23,7 +23,14 @@ body{
     padding:50px;
     border-radius:20px;
     backdrop-filter: blur(12px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    animation:fadeIn 1.2s ease;
+}
+
+/* fade animation */
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.95);}
+    to{opacity:1; transform:scale(1);}
 }
 
 /* countdown number */
@@ -45,15 +52,31 @@ body{
     margin-top:20px;
 }
 
+/* video styling */
+iframe{
+    width:80vw;
+    max-width:800px;
+    height:45vw;
+    max-height:450px;
+    border-radius:15px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
 /* button */
 button{
-    padding:12px 22px;
+    padding:12px 24px;
     border:none;
     border-radius:12px;
     background:white;
     color:black;
     cursor:pointer;
-    margin-top:20px;
+    margin-top:25px;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
 }
 </style>
 </head>
@@ -67,18 +90,22 @@ button{
 <div id="count">5</div>
 
 <div id="videoContainer">
-    <h2>💙 Surprise!</h2>
 
-    <!-- replace this link later -->
-    <iframe width="320" height="200"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        frameborder="0"
-        allowfullscreen>
-    </iframe>
+<h2>💙 Surprise!</h2>
 
-    <br>
+<!-- GOOGLE DRIVE VIDEO -->
+<iframe
+src="https://drive.google.com/file/d/1gRXBBp2emeAT6W7bPH05nalXzREBYSg9/preview"
+allow="autoplay"
+allowfullscreen>
+</iframe>
 
-    <a href="home.html"><button>⬅ Back Home</button></a>
+<br>
+
+<a href="index.html">
+<button>⬅ Back Home</button>
+</a>
+
 </div>
 
 </div>
@@ -89,10 +116,11 @@ let display = document.getElementById("count");
 let video = document.getElementById("videoContainer");
 
 let timer = setInterval(() => {
+
     count--;
     display.innerText = count;
 
-    // animation restart
+    /* restart animation */
     display.style.animation = "none";
     void display.offsetWidth;
     display.style.animation = "pop 0.5s ease";
@@ -102,7 +130,8 @@ let timer = setInterval(() => {
         display.style.display = "none";
         video.style.display = "block";
     }
-}, 1000);
+
+},1000);
 </script>
 
 </body>
